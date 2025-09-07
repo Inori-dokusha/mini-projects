@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+}
+
+#value {
+    font-size: 4rem;
+}
+
+button {
+    background: none;
+    padding: 10px 25px;
+    border: 1px solid black;
+    font-size: 1.2rem;
+}
+
+#decrease {
+    background-color: red;
+    color: white;
+}
+
+#increase {
+    background-color: green;
+    color: white;
+}
