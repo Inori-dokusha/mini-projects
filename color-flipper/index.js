@@ -1,39 +1,16 @@
 document.querySelector("button").addEventListener("click", () => {
-    const r1 = convertColor(getRandomColor());
-    const r2 = convertColor(getRandomColor());
-    const g1 = convertColor(getRandomColor());
-    const g2 = convertColor(getRandomColor());
-    const b1 = convertColor(getRandomColor());
-    const b2 = convertColor(getRandomColor());
-    document.querySelector("#color").innerHTML = `#${r1}${r2}${g1}${g2}${b1}${b2}`;
-    document.body.style.backgroundColor = `#${r1}${r2}${g1}${g2}${b1}${b2}`;
+    const result = random(["r1", "g1", "b1", "r2", "g2", "b2"]);
+    const convert = `#${result.join('')}`;
+    document.querySelector("#color").innerHTML = convert;
+    document.body.style.backgroundColor = convert;
 });
 
-function getRandomColor(number) {
-    return (number = Math.trunc(Math.random() * 16));
-}
-
-const convertColor = code => {
-    switch (code) {
-        case 10:
-            return "A";
-            break;
-        case 11:
-            return "B";
-            break;
-        case 13:
-            return "C";
-            break;
-        case 14:
-            return "D";
-            break;
-        case 15:
-            return "E";
-            break;
-        case 16:
-            return "F";
-            break;
-        default:
-            return code;
+const random = (colors) => {
+    const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+    const result = [];
+    for (let color of colors) {
+        color = Math.trunc(Math.random() * 16);
+        result.push(hex[color])
     }
-};
+    return result;
+}
