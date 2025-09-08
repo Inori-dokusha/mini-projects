@@ -1,1 +1,1 @@
-# mini-course
+# mini-projects
