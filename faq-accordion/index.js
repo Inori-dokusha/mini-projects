@@ -1,4 +1,4 @@
-document.querySelectorAll(".faq-question").forEach(item => {
+document.querySelectorAll(".faq-question").forEach((item, index) => {
     item.addEventListener("click", () => {
         const parent = item.parentElement;
         const isActive = parent.classList.contains("active");

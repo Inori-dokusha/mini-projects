@@ -2,65 +2,81 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Monospace;
+    font-size: 16px;
 }
 
 body {
-    background-color: #f5f5f5;
-    padding: 20px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
 }
 
-.faq-container {
-    max-width: 800px;
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+
+.faq-content {
+    display: grid;
+    max-width: 300px;
     margin: 0 auto;
-    padding: 20px;
 }
 
 .faq-item {
-    background-color: white;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ccdbfd;
     overflow: hidden;
+    border: 1px solid #b6ccfe;
 }
 
 .faq-question {
-    padding: 20px;
+    padding: 10px;
     cursor: pointer;
     position: relative;
     font-size: 18px;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
+    gap: 40px;
     align-items: center;
     transition: background-color 0.3s ease;
 }
 
 .faq-question:hover {
-    background-color: #f8f8f8;
+    background-color: #d7e3fc;
+}
+
+.faq-question h3 {
+    margin-left: 10px;
+    line-height: 1.5;
 }
 
 .toggle-btn {
-    font-size: 24px;
+    font-size: 1.2rem;
     width: 30px;
     height: 30px;
-    line-height: 30px;
     text-align: center;
-    background-color: #e0e0e0;
+    background-color: #edf2fb;
     border-radius: 50%;
+    border: none;
     transition:
-        background-color 0.3s ease,
-        transform 0.3s ease;
+        background-color 0.25s ease-in-out,
+        transform 0.5s ease;
+    flex-shrink: 0;
 }
 
-.faq-question.active .toggle-btn {
+.faq-item.active .toggle-btn {
     background-color: #007bff;
     color: white;
-    transform: rotate(180deg);
+    transform: rotate(45deg);
 }
 
 .faq-answer {
+    background-color: #edf2fb;
     max-height: 0;
+    width: 100%;
     overflow: hidden;
     padding: 0 20px;
     transition:
@@ -75,28 +91,5 @@ body {
 }
 
 .faq-item.active .faq-answer {
-    max-height: 200px; /* Adjust based on content */
-}
-
-/* Responsive design */
-@media (max-width: 600px) {
-    .faq-container {
-        padding: 10px;
-    }
-
-    .faq-question {
-        font-size: 16px;
-        padding: 15px;
-    }
-
-    .faq-answer p {
-        font-size: 14px;
-    }
-
-    .toggle-btn {
-        width: 25px;
-        height: 25px;
-        line-height: 25px;
-        font-size: 20px;
-    }
+    max-height: 200px;
 }
