@@ -9,37 +9,37 @@ button.addEventListener("click", addTodo);
 
 function addTodo() {
     const inputValue = input.value;
-    todo.push(inputValue);
+
     if (!inputValue) {
         popup.classList.add("on");
         setTimeout(() => {
             popup.classList.remove("on");
         }, 2000);
     } else {
-
-        ul.innerHTML = renderTodo();
-        const removeBtn = document.querySelectorAll("#remove");
-        removeBtn.forEach((item, index) => {
-            item.addEventListener(() => {
-                todo.splice(index, 1);
-
-                console.log(todo);
-                renderTodo();
-            });
-        });
+        input.value = "";
+        todo.push(inputValue);
+        renderTodo();
     }
 }
 
 function renderTodo() {
     let html = "";
-    todo.forEach(item => {
+
+    todo.forEach((item) => {
         const li = `
             <li class="list">
                 <p class="list-name">${item}</p>
                 <button class="remove">&#45;</button>
             </li>
-        `;
+    `;
         html += li;
     });
-    return html;
+    ul.innerHTML = html;
+    const btnRemove = document.querySelectorAll(".remove");
+    btnRemove.forEach((item, index) => {
+        item.addEventListener("click", () => {
+            todo.splice(index, 1);
+            renderTodo();
+        });
+    });
 }
