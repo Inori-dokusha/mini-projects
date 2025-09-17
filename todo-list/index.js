@@ -9,7 +9,7 @@ button.addEventListener("click", addTodo);
 
 function addTodo() {
     const inputValue = input.value;
-
+    
     if (!inputValue) {
         popup.classList.add("on");
         setTimeout(() => {
@@ -24,12 +24,19 @@ function addTodo() {
 
 function renderTodo() {
     let html = "";
-
+    
     todo.forEach((item) => {
         const li = `
-            <li class="list">
-                <p class="list-name">${item}</p>
-                <button class="remove">&#45;</button>
+            <li class="list"
+                <div class="checkbox">
+                    <input type="checkbox" />
+                </div>
+                <div class="list-name">
+                    <p>${item}</p>
+                </div>
+                <button class="remove">
+                    <img src="icon/trash.svg"/>
+                </button>
             </li>
     `;
         html += li;

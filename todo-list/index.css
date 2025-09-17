@@ -23,6 +23,31 @@ body {
     background-color: lightgray;
 }
 
+button:not(.search-icon) {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+img {
+    display: flex;
+}
+
+input,
+select {
+    outline: none;
+    border: none;
+}
+
+hr {
+    border: 1px solid var(--white);
+}
+
 .popup {
     position: absolute;
     top: -100px;
@@ -51,10 +76,11 @@ body {
 }
 
 .todo-app h1 {
+    text-transform: uppercase;
     text-align: center;
     font-weight: 600;
     font-size: 2rem;
-    color: var(--black);
+    color: var(--white);
     margin-bottom: 20px;
 }
 
@@ -73,30 +99,60 @@ body {
     transition: all 300ms ease;
 }
 
-.todo-input input:focus {
-    outline: none;
-}
-
-button {
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: 700;
-    cursor: pointer;
-}
-
 .todo-input button {
     color: var(--black);
     background-color: var(--white);
 }
 
-.list-name,
+.list,
 input,
-button {
+button:not(.search-icon) {
     box-shadow: 0 5px 15px var(--gray);
+}
+
+.features {
+    margin-block: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
+}
+
+.features * {
+    border-radius: 5px;
+}
+
+.dropdown {
+    grid-area: 1 / 1 / 2 / 3;
+    width: 100%;
+    padding: 10px;
+}
+
+.date {
+    grid-area: 1 / 3 / 2 / 5;
+    width: 100%;
+    display: flex;
+}
+
+.search {
+    grid-area: 2 / 1 / 3 / 5;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search input {
+    width: 100%;
+    padding: 10px;
+}
+
+.search .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    height: 100%;
+    border: none;
+    background: none;
 }
 
 .todo-list {
@@ -114,19 +170,34 @@ button {
     display: flex;
     align-items: start;
     justify-content: space-between;
+    background: white;
     gap: 1rem;
+    width: 100%;
+    border-radius: 50px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
 }
 
 .list-name {
     font-size: 1.2rem;
     color: var(--black);
-    background-color: var(--white);
-    width: 244px;
-    padding: 15px 20px;
-    border-radius: 5px;
+    border: 1px solid red;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .remove {
     background-color: var(--red);
-    color: var(--white);
+}
+
+.remove img {
+    margin: 0 auto;
 }
