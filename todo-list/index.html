@@ -1,53 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Todo List</title>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="index.css" />
-</head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Fredoka:wght@300..700&display=swap"
+            rel="stylesheet"
+        />
 
-<body>
-    <div class="popup">
-        <p class="text">Kegiatan tidak boleh kosong!</p>
-    </div>
-    <div class="todo-app">
-        <h1>Todo List</h1>
-        
-        <div class="todo-input">
-            <input type="text" id="todoText" placeholder="Tulis kegiatan..." />
-            <button id="addTodo">&#43;</button>
-        </div>
-        
-        <div class="features">
-            <select class="dropdown">
-                <option value="all" selected>All</option>
-                <option value="active">Active</option>
-                <option value="complated">Completed</option>
-            </select>
-            <div class="date">
-                <input type="date" value="2025-09-16" />
+        <link rel="stylesheet" href="index.css" />
+    </head>
+
+    <body>
+        <div class="todo-app">
+            <!-- Judul -->
+            <div class="title">Daftar Kegiatan</div>
+
+            <!-- Input kegiatan -->
+            <div class="todo-input">
+                <input
+                    type="text"
+                    id="todoText"
+                    placeholder="Tulis kegiatan..."
+                />
+                <button id="addTodo">&#43;</button>
             </div>
-            <div class="search">
-                <input type="search">
-                <button class="search-icon">
-                    <img src="icon/search.svg" />
-                </button>
-            </div>
-        </div>
-        
-        <hr />
-        
-        <ul class="todo-list" id="todoList">
-            <!-- List item todo akan muncul di sini -->
-        </ul>
-    </div>
-    
-    <script src="index.js"></script>
-</body>
 
+            <div class="filters">
+                <button class="all" id="on">Semua</button>
+                <button class="active">Aktif</button>
+                <button class="completed">Selesai</button>
+            </div>
+
+            <ul class="todo-list" id="todoList">
+                <!-- List item todo akan muncul di sini -->
+            </ul>
+        </div>
+
+        <script src="index.js"></script>
+    </body>
 </html>

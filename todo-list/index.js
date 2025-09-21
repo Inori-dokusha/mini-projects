@@ -1,20 +1,23 @@
 const todo = [];
 
+//Get all elements
 const input = document.querySelector("#todoText");
 const button = document.querySelector("#addTodo");
 const ul = document.querySelector("#todoList");
-const popup = document.querySelector(".popup");
+const filtersButton = document.querySelectorAll(".filters button");
 
+//Button to add new todo
 button.addEventListener("click", addTodo);
 
 function addTodo() {
     const inputValue = input.value;
-    
+
+    //check value of input
     if (!inputValue) {
-        popup.classList.add("on");
+        input.classList.add("danger");
         setTimeout(() => {
-            popup.classList.remove("on");
-        }, 2000);
+            input.classList.remove("danger");
+        }, 1000);
     } else {
         input.value = "";
         todo.push(inputValue);
@@ -24,29 +27,40 @@ function addTodo() {
 
 function renderTodo() {
     let html = "";
-    
-    todo.forEach((item) => {
+
+    todo.forEach(item => {
         const li = `
-            <li class="list"
-                <div class="checkbox">
-                    <input type="checkbox" />
-                </div>
-                <div class="list-name">
-                    <p>${item}</p>
-                </div>
-                <button class="remove">
-                    <img src="icon/trash.svg"/>
+           <li class="item">
+                <input type="checkbox" id="checkbox" />
+                <p class="text">${item}</p>
+                <button id="removeTodo">
+                    <img src="icon/trash.svg" width="24" />
                 </button>
             </li>
     `;
         html += li;
     });
     ul.innerHTML = html;
-    const btnRemove = document.querySelectorAll(".remove");
+
+    const btnRemove = document.querySelectorAll("#removeTodo");
     btnRemove.forEach((item, index) => {
         item.addEventListener("click", () => {
             todo.splice(index, 1);
             renderTodo();
         });
     });
+    const checkbox = document
+        .querySelectorAll("input[type='checkbox']")
+        .forEach((box, index) => {
+            const p = document.querySelectorAll(".text");
+            box.addEventListener("change", () => {
+                if(box.checked === true) {
+                const checklist = p[index].setAttribute(
+                    "data-checklist",
+                    "true"
+                );
+                console.log(box.checked);
+                }
+            });
+        });
 }
