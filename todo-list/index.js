@@ -1,4 +1,17 @@
-const todo = [];
+const todo = [
+    {
+        text: "Learn HTML",
+        done: false,
+    },
+    {
+        text: "Learn CSS",
+        done: false,
+    },
+    {
+        text: "Learn JS",
+        done: false,
+    },
+];
 
 //Get all elements
 const input = document.querySelector("#todoText");
@@ -8,6 +21,8 @@ const filtersButton = document.querySelectorAll(".filters button");
 
 //Button to add new todo
 button.addEventListener("click", addTodo);
+
+renderTodo();
 
 function addTodo() {
     const inputValue = input.value;
@@ -20,7 +35,8 @@ function addTodo() {
         }, 1000);
     } else {
         input.value = "";
-        todo.push(inputValue);
+        todo.push({ text: inputValue, done: false });
+        console.log(todo);
         renderTodo();
     }
 }
@@ -28,11 +44,11 @@ function addTodo() {
 function renderTodo() {
     let html = "";
 
-    todo.forEach(item => {
+    todo.forEach((item) => {
         const li = `
            <li class="item">
                 <input type="checkbox" id="checkbox" />
-                <p class="text">${item}</p>
+                <p class="text">${item.text}</p>
                 <button id="removeTodo">
                     <img src="icon/trash.svg" width="24" />
                 </button>
@@ -41,26 +57,25 @@ function renderTodo() {
         html += li;
     });
     ul.innerHTML = html;
-
-    const btnRemove = document.querySelectorAll("#removeTodo");
-    btnRemove.forEach((item, index) => {
-        item.addEventListener("click", () => {
-            todo.splice(index, 1);
-            renderTodo();
-        });
-    });
-    const checkbox = document
-        .querySelectorAll("input[type='checkbox']")
-        .forEach((box, index) => {
-            const p = document.querySelectorAll(".text");
-            box.addEventListener("change", () => {
-                if(box.checked === true) {
-                const checklist = p[index].setAttribute(
-                    "data-checklist",
-                    "true"
-                );
-                console.log(box.checked);
-                }
-            });
-        });
 }
+
+// button remove todo
+const btnRemove = document.querySelectorAll("#removeTodo");
+btnRemove.forEach((item, index) => {
+    item.addEventListener("click", () => {
+        todo.splice(index, 1);
+        console.log(todo);
+        renderTodo();
+    });
+});
+
+const filters = document.querySelector(".filters");
+filters.addEventListener("click", (element) => {
+    if (element.target.matches(".all")) {
+        console.log(todo);
+    } else if (element.target.matches(".active")) {
+        buttonActive();
+    } else if (element.target.matches(".completed")) {
+        buttonCompleted();
+    }
+});
