@@ -18,7 +18,7 @@ const timer = () => {
     } else if (hour === 24) {
         hour = 0;
     }
-
+    
     time.textContent = convertToString();
 };
 
@@ -34,7 +34,7 @@ controls.addEventListener("click", (event) => {
     const btnStar = event.target.matches(".btn-start");
     const btnStop = event.target.matches(".btn-stop");
     const btnReset = event.target.matches(".btn-reset");
-
+    
     if (btnStar) {
         startTImer();
     } else if (btnStop) {
@@ -52,12 +52,13 @@ function startTImer() {
 
 let lap = 0;
 let timeStop = "";
+
 function stopTimer() {
     clearInterval(intervalID);
-
+    
     lap++;
     timeStop = convertToString();
-
+    
     lapTimes.push({
         lap: lap,
         time: timeStop,
@@ -71,7 +72,7 @@ lapTimes.forEach((item) => {
             <span class="time">${item.time}</span>
         </div>
     `;
-
+    
     document.querySelector(".lap-times").innerHTML = html;
     console.log(item);
 });
