@@ -49,6 +49,7 @@ let intervalID;
 function startTImer() {
     intervalID = setInterval(timer, 1000);
 }
+9
 
 let lap = 0;
 let timeStop = "";
@@ -63,19 +64,25 @@ function stopTimer() {
         lap: lap,
         time: timeStop,
     });
+    renderHtml();
 }
 
-lapTimes.forEach((item) => {
-    const html = `
-        <div class="lap-time">
-            <span class="lap">Lap ${item.lap}</span>
-            <span class="time">${item.time}</span>
-        </div>
-    `;
+function renderHtml() {
+    let html = "";
+    
+    lapTimes.forEach((item) => {
+        const lap = `
+            <div class="lap-time">
+                <span class="lap">Lap ${item.lap}</span>
+                <span class="time">${item.time}</span>
+            </div>
+        `;
+        
+        html += lap;
+    });
     
     document.querySelector(".lap-times").innerHTML = html;
-    console.log(item);
-});
+}
 
 function resetTimer() {
     second = 0;
